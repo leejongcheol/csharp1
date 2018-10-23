@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Net;
-
 using System.Net.Sockets;
 using System.Threading;
 class ClientHadler
@@ -30,6 +29,7 @@ class ClientHadler
         }
     }
 }
+
 class Server
 {
     public static void Main()
@@ -48,7 +48,7 @@ class Server
             {
                 clientsocket = tcpListener.AcceptSocket();
                 ClientHadler cHandler = new ClientHadler(clientsocket);
-                Thread t = new Thread(new ThreadStart(cHandler.chat));
+                Thread t = new Thread(cHandler.chat);
                 t.Start();
             }
 
